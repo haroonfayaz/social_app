@@ -37,7 +37,7 @@ const Menuitems =[
 const [open,setOpen]=useState(false)
   return (
     
-    <AppBar sx={{background:"black"}}>
+    <AppBar sx={{background:"black"}} position='static'>
         <StyledToolbar>
             <SocialBox>
             <FacebookIcon/>
@@ -46,9 +46,9 @@ const [open,setOpen]=useState(false)
             </SocialBox>
 
             <MenuBox sx={{ display: { xs:"none", sm:"none", md:"flex"}}} >
-            {Menuitems.map((items)=>{
+            {Menuitems.map((items,i)=>{
                 return(
-                <Typography variant='h6' sx={{cursor:"pointer"}}>{items.name}</Typography>
+                <Typography variant='h6' sx={{cursor:"pointer"}} key={i} >{items.name}</Typography>
                 )
 
             })}
@@ -73,9 +73,9 @@ const [open,setOpen]=useState(false)
       >
       <Box sx={{width:300, height:"90vh"}}>
       <Box m={2}>
-        {Menuitems.map((items)=>{
+        {Menuitems.map((items,i)=>{
                 return(
-                <Typography variant='h6' sx={{cursor:"pointer"}}>{items.name}</Typography>
+                <Typography variant='h6' sx={{cursor:"pointer"}} key={i}>{items.name}</Typography>
                 )
 
             })}
