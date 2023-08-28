@@ -24,7 +24,7 @@ const Categories = () => {
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 4 }}
-        mt={5}
+        mt={3}
       >
         <StyledBox sx={{ backgroundImage: `url(${kidsimage})` }}>
           <StyledTypography align="center" variant="h3">

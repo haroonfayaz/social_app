@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import HeroImage from "../static/HeroImage.jpg";
+import Categories from "./Categories";
 
 const Hero = () => {
   return (
@@ -53,6 +54,7 @@ const Hero = () => {
           </Box>
         </Box>
       </Box>
+      <Categories/>
     </Box>
   );
 };
