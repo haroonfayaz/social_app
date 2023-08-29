@@ -1,42 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import image1 from "../static/image1.jpg";
-import image2 from "../static/image2.jpg";
-import image3 from "../static/image3.jpg";
-import image4 from "../static/image4.jpg";
-import image5 from "../static/image5.jpg";
 import { Box } from "@mui/material";
+import axios from 'axios';
 
-const data = [
-  {
-    name: "Mens",
-    image: image1,
-    price: 220,
-  },
-  {
-    name: "Watches",
-    image: image2,
-    price: 1120,
-  },
-  {
-    name: "Perfumes",
-    image: image3,
-    price: 3220,
-  },
-  {
-    name: "Kids Top",
-    image: image4,
-    price: 2202,
-  },
-  {
-    name: "Womens",
-    image: image5,
-    price: 5520,
-  },
-];
+
+
 const Products = () => {
+  const [products,setProducts]=useState([]);
+
+  const  getAllProducts= async()=> {
+    try {
+      const res = await axios.get("https://dummyjson.com/products");
+      setProducts(res.data.products);
+      console.log(products)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(()=>{
+    getAllProducts();
+}, []);
   return (
-    <Box sx={{ background: "#C3EDC0" }}>
+
+    <Box  sx={{
+          flexGrow: 1,
+          padding: "20px",
+          background: "#C3EDC0",
+        }}>
       <Box
         sx={{
           display: { xs: "block", sm: "block", md: "grid" },
@@ -44,19 +35,22 @@ const Products = () => {
           gap: "20px",
         }}
       >
-        {data.map((items, i) => {
-          console.log(items);
+        {products.map((items) => {
           return (
             <Card
-              key={i}
-              image={items.image}
-              name={items.name}
+              key={items.id}
+              image={items.thumbnail}
+              name={items.title}
               price={items.price}
+              desc={items.description}
+              disc={items.discountPercentage}
             />
           );
         })}
       </Box>
+
     </Box>
+
   );
 };
 
